@@ -65,12 +65,7 @@ libraryDependencies ++= Seq(
   "org.apache.kafka"  % "kafka-streams"       % "2.8.0",
   "org.apache.kafka" %% "kafka-streams-scala" % "2.8.0"
 )
-libraryDependencies ++= {
-  val kafkaSerializationV = "0.5.0"
-  Seq(
-    "com.ovoenergy" %% "kafka-serialization-avro4s" % kafkaSerializationV // To provide Avro4s Avro support
-  )
-}
+
 addCompilerPlugin(
   "org.typelevel" %% "kind-projector" % "0.13.0" cross CrossVersion.full
 )
