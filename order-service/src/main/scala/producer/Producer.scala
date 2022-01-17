@@ -29,18 +29,7 @@ object Producer {
     }
   }
 
-  def main(args: Array[String]): Unit = {}
-}
-
-class OrderSerializer extends Serializer[Order] {
-  override def configure(map: util.Map[String, _], b: Boolean): Unit = {}
-  override def serialize(s: String, t: Order): Array[Byte] = {
-    if (t == null)
-      null
-    else {
-      val objectMapper = new ObjectMapper()
-      objectMapper.writeValueAsString(t).getBytes
-    }
+  def main(args: Array[String]): Unit = {
+    sendOrderToKafka(topic, Order(20)).unsafeRunSync()
   }
-  override def close(): Unit = {}
 }
