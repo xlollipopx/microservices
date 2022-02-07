@@ -1,0 +1,4 @@
+[debug] Copy resource mappings: 
+[debug] 	(/home/anton.stelmakh/projects/Play/Train/conf/logback.xml,/home/anton.stelmakh/projects/Play/Train/target/scala-2.13/classes/logback.xml)
+[debug] 	(/home/anton.stelmakh/projects/Play/Train/conf/application.conf,/home/anton.stelmakh/projects/Play/Train/target/scala-2.13/classes/application.conf)
+[debug] 	(/home/anton.stelmakh/projects/Play/Train/conf/routes,/home/anton.stelmakh/projects/Play/Train/target/scala-2.13/classes/routes)

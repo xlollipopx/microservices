@@ -1,11 +1,12 @@
 package domain
 import enumeratum.{CirceEnum, Enum, EnumEntry}
 
+import java.util.UUID
 import scala.collection.immutable
 
 object domain {
   final case class Order(cost: Int)
-  final case class OrderWithStatus(cost: Int, status: OrderStatus)
+  final case class OrderWithStatus(id: UUID, cost: Int, status: OrderStatus)
 
   sealed trait OrderStatus extends EnumEntry
   object OrderStatus extends Enum[OrderStatus] with CirceEnum[OrderStatus] {

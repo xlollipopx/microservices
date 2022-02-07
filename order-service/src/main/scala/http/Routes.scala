@@ -16,19 +16,13 @@ final case class Order(cost: Int)
 final case class Routes[F[_]: Monad: Sync]() extends Http4sDsl[F] {
   private val prefixPath = ""
 
-  private val httpRoutes: HttpRoutes[F] = HttpRoutes.of[F] {
-//    case GET -> Root / "welcome" =>
-//      for {
-//        res <- Ok("Hi")
-//      } yield res
+  private val httpRoutes: HttpRoutes[F] = HttpRoutes.of[F] { case req @ POST -> Root / "make-order" =>
+    req.as[Order].flatMap { dto =>
+      for {
 
-    case req @ POST -> Root / "make-order" =>
-      req.as[Order].flatMap { dto =>
-        for {
-
-          res <- Ok(dto)
-        } yield res
-      }
+        res <- Ok(dto)
+      } yield res
+    }
   }
 
   val routes: HttpRoutes[F] = Router(

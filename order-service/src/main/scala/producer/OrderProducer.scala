@@ -12,7 +12,7 @@ import java.util.Properties
 import scala.language.higherKinds
 import org.apache.kafka.common.serialization.Serializer
 
-object Producer {
+object OrderProducer {
   val props: Properties = new Properties()
   props.put("bootstrap.servers", "localhost:9092")
   props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
@@ -21,7 +21,7 @@ object Producer {
   val producer = new KafkaProducer[String, Order](props)
   val topic    = "order-validation"
 
-  def sendOrderToKafka[F[_]](topic: String, value: Order) = {
+  def sendOrderForValidation[F[_]](topic: String, value: Order) = {
     IO.pure {
       val record   = new ProducerRecord[String, Order](topic, value)
       val metadata = producer.send(record)
@@ -30,6 +30,6 @@ object Producer {
   }
 
   def main(args: Array[String]): Unit = {
-    sendOrderToKafka(topic, Order(20)).unsafeRunSync()
+    sendOrderForValidation(topic, Order(20)).unsafeRunSync()
   }
 }

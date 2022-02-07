@@ -25,6 +25,7 @@ final case class Routes[F[_]: Monad: Sync]() extends Http4sDsl[F] {
     case req @ POST -> Root / "make-order" =>
       req.as[Order].flatMap { dto =>
         for {
+
           res <- Ok(dto)
         } yield res
       }
