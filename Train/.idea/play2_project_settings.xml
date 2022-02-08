@@ -13,6 +13,7 @@
         <entry key="train">
           <value>
             <ProjectSettingsEntry>
+              <option name="sourceDir" value="$PROJECT_DIR$/app" />
               <option name="confDir" value="$PROJECT_DIR$/app" />
               <option name="playDistrPath" value="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play_2.13/2.8.13/play_2.13-2.8.13.jar" />
               <option name="templateImports">

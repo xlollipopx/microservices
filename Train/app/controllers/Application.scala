@@ -1,25 +1,26 @@
 package controllers
 
 import akka.actor.ActorSystem
-import model.{ProductRepo, SchemaDefinition}
+import cats.effect.IO
+import cats.effect.IO.fromFuture
+import cats.effect.unsafe.implicits.global
+import model.SchemaDefinition
 import play.api.Configuration
-
-import javax.inject._
-import play.api.mvc._
 import play.api.libs.json._
 import play.api.mvc._
-import play.api.Configuration
+import repository.ProductRepository
 import sangria.execution._
-import sangria.parser.{QueryParser, SyntaxError}
 import sangria.marshalling.playJson._
-import sangria.execution.deferred.DeferredResolver
-import sangria.renderer.SchemaRenderer
+import sangria.parser.{QueryParser, SyntaxError}
 import sangria.slowlog.SlowLog
 
+import javax.inject._
 import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
-class Application @Inject() (system: ActorSystem, config: Configuration) extends InjectedController {
+
+
+class Application @Inject() (system: ActorSystem, config: Configuration, repository: ProductRepository) extends InjectedController {
 
   import system.dispatcher
 
@@ -28,7 +29,7 @@ class Application @Inject() (system: ActorSystem, config: Configuration) extends
     Ok(views.html.index())
   }
   def graphql(query: String, variables: Option[String], operation: Option[String]) = Action.async { request =>
-    executeQuery(query, variables map parseVariables, operation, isTracingEnabled(request))
+    executeQuery(query, variables map parseVariables, operation, isTracingEnabled(request)).unsafeToFuture()
   }
 
   private def parseVariables(variables: String) =
@@ -44,42 +45,41 @@ class Application @Inject() (system: ActorSystem, config: Configuration) extends
       case obj: JsObject => Some(obj)
       case _ => None
     }
-
-    executeQuery(query, variables, operation, isTracingEnabled(request))
+    executeQuery(query, variables, operation, isTracingEnabled(request)).unsafeToFuture()
   }
+
 
   private def executeQuery(query: String, variables: Option[JsObject], operation: Option[String], tracing: Boolean) =
     QueryParser.parse(query) match {
 
       // query parsed successfully, time to execute it!
       case Success(queryAst) =>
-        Executor.execute(SchemaDefinition.ProductSchema, queryAst, new ProductRepo,
+        fromFuture[Result](IO(Executor.execute(SchemaDefinition.ProductSchema, queryAst, repository,
           operationName = operation,
           variables = variables getOrElse Json.obj(),
-          deferredResolver = DeferredResolver.fetchers(SchemaDefinition.products),
+         // deferredResolver = DeferredResolver.fetchers(SchemaDefinition.products),
           exceptionHandler = exceptionHandler,
           queryReducers = List(
-            QueryReducer.rejectMaxDepth[ProductRepo](15),
-            QueryReducer.rejectComplexQueries[ProductRepo](4000, (_, _) => TooComplexQueryError)),
+            QueryReducer.rejectMaxDepth[ProductRepository](15),
+            QueryReducer.rejectComplexQueries[ProductRepository](4000, (_, _) => TooComplexQueryError)),
           middleware = if (tracing) SlowLog.apolloTracing :: Nil else Nil)
           .map(Ok(_))
           .recover {
             case error: QueryAnalysisError => BadRequest(error.resolveError)
             case error: ErrorWithResolver => InternalServerError(error.resolveError)
-          }
+          }))
 
       // can't parse GraphQL query, return error
       case Failure(error: SyntaxError) =>
-        Future.successful(BadRequest(Json.obj(
+        fromFuture[Result](IO(Future.successful(BadRequest(Json.obj(
           "syntaxError" -> error.getMessage,
           "locations" -> Json.arr(Json.obj(
             "line" -> error.originalError.position.line,
-            "column" -> error.originalError.position.column)))))
+            "column" -> error.originalError.position.column)))))))
 
       case Failure(error) =>
-        throw error
+        fromFuture[Result](IO(throw error))
     }
-
 
   def isTracingEnabled(request: Request[_]) = request.headers.get("X-Apollo-Tracing").isDefined
 

@@ -11,13 +11,17 @@
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.13/routes/main" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.13/twirl/main" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/../../target" />
+      <excludeFolder url="file://$MODULE_DIR$/../../target/global-logging" />
+      <excludeFolder url="file://$MODULE_DIR$/../../target/streams" />
+      <excludeFolder url="file://$MODULE_DIR$/../../target/task-temp-directory" />
+      <excludeFolder url="file://$MODULE_DIR$/../../target/web" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: aopalliance:aopalliance:1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: ch.qos.logback:logback-classic:1.2.10:jar" level="project" />
     <orderEntry type="library" name="sbt: ch.qos.logback:logback-core:1.2.10:jar" level="project" />
-    <orderEntry type="library" name="sbt: com.chuusai:shapeless_2.13:2.3.3:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.chuusai:shapeless_2.13:2.3.7:jar" level="project" />
     <orderEntry type="library" name="sbt: com.fasterxml.jackson.core:jackson-annotations:2.11.4:jar" level="project" />
     <orderEntry type="library" name="sbt: com.fasterxml.jackson.core:jackson-core:2.11.4:jar" level="project" />
     <orderEntry type="library" name="sbt: com.fasterxml.jackson.core:jackson-databind:2.11.4:jar" level="project" />
@@ -82,6 +86,11 @@
     <orderEntry type="library" scope="TEST" name="sbt: commons-io:commons-io:2.6:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: commons-logging:commons-logging:1.2:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: commons-net:commons-net:3.6:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.circe:circe-core_2.13:0.14.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.circe:circe-generic_2.13:0.14.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.circe:circe-jawn_2.13:0.14.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.circe:circe-numbers_2.13:0.14.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: io.circe:circe-parser_2.13:0.14.1:jar" level="project" />
     <orderEntry type="library" name="sbt: io.dropwizard.metrics:metrics-core:4.1.13:jar" level="project" />
     <orderEntry type="library" name="sbt: io.jsonwebtoken:jjwt:0.9.1:jar" level="project" />
     <orderEntry type="library" name="sbt: io.opentracing.contrib:opentracing-scala-concurrent_2.13:0.0.6:jar" level="project" />
@@ -125,6 +134,11 @@
     <orderEntry type="library" scope="TEST" name="sbt: org.hamcrest:hamcrest:2.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.lz4:lz4-java:1.8.0:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.mockito:mockito-core:3.2.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.mongodb.scala:mongo-scala-bson_2.13:2.9.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.mongodb.scala:mongo-scala-driver_2.13:2.9.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.mongodb:bson:3.12.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.mongodb:mongodb-driver-async:3.12.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.mongodb:mongodb-driver-core:3.12.2:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.objenesis:objenesis:2.6:jar" level="project" />
     <orderEntry type="library" name="sbt: org.parboiled:parboiled_2.13:2.1.8:jar" level="project" />
     <orderEntry type="library" name="sbt: org.reactivestreams:reactive-streams:1.0.3:jar" level="project" />
@@ -156,6 +170,13 @@
     <orderEntry type="library" scope="TEST" name="sbt: org.specs2:specs2-junit_2.13:4.8.3:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.specs2:specs2-matcher_2.13:4.8.3:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: org.specs2:specs2-mock_2.13:4.8.3:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-core_2.13:2.7.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-effect-kernel_2.13:3.3.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-effect-std_2.13:3.3.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-effect_2.13:3.3.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:cats-kernel_2.13:2.7.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:jawn-parser_2.13:1.1.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.typelevel:simulacrum-scalafix-annotations_2.13:0.5.4:jar" level="project" />
     <orderEntry type="library" name="sbt: tyrex:tyrex:1.0.1:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: xalan:serializer:2.7.2:jar" level="project" />
     <orderEntry type="library" scope="TEST" name="sbt: xalan:xalan:2.7.2:jar" level="project" />

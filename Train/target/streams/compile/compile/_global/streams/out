@@ -1,0 +1,7 @@
+[info] /home/anton.stelmakh/projects/Play/Train/app/model/Data.scala:1:1: 
+[info] Found names but no class, trait or object is defined in the compilation unit.
+[info] The incremental compiler cannot record the dependency information in such case.
+[info] Some errors like unused import referring to a non-existent class might not be reported.
+[info]     
+[info] package model
+[info] ^
