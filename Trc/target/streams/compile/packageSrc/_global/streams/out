@@ -1,0 +1,27 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /home/anton.stelmakh/projects/CustomCrypto/Trc/target/scala-2.12/trc_2.12-1.0.0-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	application.conf[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/resources/application.conf[0m
+[0m[[0m[0mdebug[0m] [0m[0m	routes.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/routes.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Application.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/Application.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SimpleActor.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/SimpleActor.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	actors/BlockChainActor.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/actors/BlockChainActor.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	actors/CompositeActor.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/actors/CompositeActor.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	blockchain/Mining.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/blockchain/Mining.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	blockchain/BlockchainNetwork.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/blockchain/BlockchainNetwork.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	blockchain/Broker.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/blockchain/Broker.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	blockchain/Blockchain.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/blockchain/Blockchain.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	http/Routes.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/http/Routes.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	p2p/PeerToPeer.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/anton.stelmakh/projects/CustomCrypto/Trc/src/main/scala/p2p/PeerToPeer.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

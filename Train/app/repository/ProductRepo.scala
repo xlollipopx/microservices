@@ -78,6 +78,7 @@ class ProductRepositoryImpl extends ProductRepository {
     val insertObservable: SingleObservable[Completed] = collectionP.insertMany(list)
     fromFuture[List[Product]](IO(insertObservable.head().map(_ => list)))
   }
+  
 
   override def update(product: Product): IO[Boolean] = {
     val observableUpdate: SingleObservable[UpdateResult] = collectionP.replaceOne(idEqual(product._id.toString), product)

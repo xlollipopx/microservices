@@ -1,0 +1,92 @@
+[0m[[0m[0mdebug[0m] [0m[0mExecuting Native docker build --force-rm -t trc:1.0.0 .[0m
+[0m[[0m[0mdebug[0m] [0m[0mWorking directory /home/anton.stelmakh/projects/CustomCrypto/Trc/target/docker/stage[0m
+[0m[[0m[0minfo[0m] [0m[0mSending build context to Docker daemon  57.54MB[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 1/20 : FROM openjdk:8 as stage0[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 47482c603b2a[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 2/20 : LABEL snp-multi-stage="intermediate"[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 5a406e42741c[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 5a406e42741c[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 61bf0be568c1[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 3/20 : LABEL snp-multi-stage-id="21b94137-b472-4167-85fe-5cf9d9090934"[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 1b3ffb627777[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 1b3ffb627777[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 3bacc387afb9[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 4/20 : WORKDIR /opt/docker[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in ca0f4588e590[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container ca0f4588e590[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 0ebc877566ea[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 5/20 : COPY 1/opt /1/opt[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> b3d76421035e[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 6/20 : COPY 2/opt /2/opt[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 241433aecbc2[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 7/20 : USER root[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in d6453a2f697d[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container d6453a2f697d[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 112ecdda179a[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 8/20 : RUN ["chmod", "-R", "u=rX,g=rX", "/1/opt/docker"][0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 16a76c5c1a48[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 16a76c5c1a48[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> b83474ceba9b[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 9/20 : RUN ["chmod", "-R", "u=rX,g=rX", "/2/opt/docker"][0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 199e0d950ddf[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 199e0d950ddf[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> b5816720e6f0[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 10/20 : RUN ["chmod", "u+x,g+x", "/1/opt/docker/bin/trc"][0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 3d755eecd133[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 3d755eecd133[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> cf3b9e509539[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 11/20 : FROM openjdk:8 as mainstage[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 47482c603b2a[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 12/20 : USER root[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in eee56eee476c[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container eee56eee476c[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> cb66e9b1898f[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 13/20 : RUN id -u demiourgos728 1>/dev/null 2>&1 || (( getent group 0 1>/dev/null 2>&1 || ( type groupadd 1>/dev/null 2>&1 && groupadd -g 0 root || addgroup -g 0 -S root )) && ( type useradd 1>/dev/null 2>&1 && useradd --system --create-home --uid 1001 --gid 0 demiourgos728 || adduser -S -u 1001 -G root demiourgos728 ))[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in bc5151015300[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container bc5151015300[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> dd9fcacf949d[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 14/20 : WORKDIR /opt/docker[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 7213c6f53b87[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 7213c6f53b87[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 3f1d49f2c426[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 15/20 : COPY --from=stage0 --chown=demiourgos728:root /1/opt/docker /opt/docker[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 3b24564ffa6b[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 16/20 : COPY --from=stage0 --chown=demiourgos728:root /2/opt/docker /opt/docker[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 4ecef8473a23[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 17/20 : EXPOSE 9000 2552[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in b45665f14a01[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container b45665f14a01[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 8cab98507073[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 18/20 : USER 1001:0[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 407c301655b8[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 407c301655b8[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> ef48117d536d[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 19/20 : ENTRYPOINT ["/opt/docker/bin/trc"][0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 90e9b56f1190[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 90e9b56f1190[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> e5ea243198e1[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 20/20 : CMD [][0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in acff41ec497f[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container acff41ec497f[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> c21524e79073[0m
+[0m[[0m[0minfo[0m] [0m[0mSuccessfully built c21524e79073[0m
+[0m[[0m[0minfo[0m] [0m[0mSuccessfully tagged trc:1.0.0[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate image(s) (labeled "snp-multi-stage-id=21b94137-b472-4167-85fe-5cf9d9090934") [0m
+[0m[[0m[0minfo[0m] [0m[0mDeleted Images:[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:cf3b9e509539ce7500a3e607de98f0051c37b89d0956dd92526fa1b4471a37e4[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:4ce67d659a5768a2790f9504cf2c766be816fbad04cdc15e12d8b5de624d569e[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:b5816720e6f06bff881d8b417cfa7fb3f880081f2a85f0eb378d0aa532b6a285[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:44cf2436bccf6e8c5c188ab4d9cfc2e576e1f1d99d61f2d6de6d557dcbcd86b5[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:b83474ceba9b89008d0101d261bb9447d6e11da4dbb0aea7930f481c9e6ca413[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:ccbea2829afebb16b565d792a62b88a7bc8088f4421bcddffb4a236912a2b3df[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:112ecdda179a86cab68df62a60e40d25a87b7cd2b25191e18ba78d4a610b9b86[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:241433aecbc2743214b664f544b22555c062e7da06771d4a762274ecc6b61b87[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:9cadd41695ba6480d7f08449a0097bdebf220e816a3d0c7cbdda724dd71f2a1e[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:b3d76421035e7107a2ead44690e6748a41ba4e54b8ed17bfabcd79d0e01ed1b1[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:e117836deddb2c3373937c877fc2107c848ccb8b84f0542bdb12a1047914beec[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:0ebc877566eaf2fcea268afbb47b0f6b9eaf3837167369044265e8198e2b38b2[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:88f7147ce9acd647325c801ecea15a75c3889f087a22f73da392cf7c677a5d30[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:3bacc387afb97debac666adc7813069ec22d8ff1935c95d2f026d649cc868b66[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:61bf0be568c17e252b1d31f6276846f260f917b2197517f8062cdb23debeda0c[0m
+[0m[[0m[0minfo[0m] [0m[0mTotal reclaimed space: 115MB[0m
+[0m[[0m[0minfo[0m] [0m[0mBuilt image trc with tags [1.0.0][0m
