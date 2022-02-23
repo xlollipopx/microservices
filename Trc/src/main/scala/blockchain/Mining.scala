@@ -13,11 +13,11 @@ object Mining {
 
 trait Mining {
   this: CompositeActor with PeerToPeer with BlockchainNetwork =>
+  receiver { case Mine(data) =>
+    blockChain.addBlock(data)
+    broadcast(AddBlockRequest(blockChain.latestBlock))
+    logger.info("Block mined")
+    sender() ! blockChain.latestBlock
 
-  receiver {
-    case Mine(data) =>
-      blockChain.addBlock(data)
-      broadcast(AddBlockRequest(blockChain.latestBlock))
-      sender() ! blockChain.latestBlock
   }
 }

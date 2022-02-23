@@ -1,26 +1,20 @@
 import actors.BlockChainActor
-import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, OneForOneStrategy, Props}
-import akka.actor.Actor.emptyBehavior
-import akka.actor.SupervisorStrategy.{Restart, Resume, Stop}
+import akka.actor.ActorSystem
 import akka.event.jul.Logger
 import akka.http.scaladsl.Http
-import akka.persistence.PersistentActor
 import akka.stream.ActorMaterializer
 import blockchain.BlockChain
 import com.typesafe.config.ConfigFactory
 import http.Routes
-import routes.simpleRoute
 
-import scala.concurrent.{ExecutionContext, ExecutionContextExecutor}
+import scala.concurrent.ExecutionContextExecutor
+
 
 object Application extends App with Routes{
-  //  val localSystem = ActorSystem("LocalSystem", ConfigFactory.load("application.conf"))
-  //  val localSimpleActor = localSystem.actorOf(Props[SimpleActor], "localSimpleActor")
-  //  localSimpleActor ! "hiii"
-  //  print("Hello!")
+
   implicit val system: ActorSystem = ActorSystem("BlockChain")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
-  implicit val executionContext = system.dispatcher
+  implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
   val blockChainActor = system.actorOf(BlockChainActor.props(BlockChain()), "blockChainActor")
 

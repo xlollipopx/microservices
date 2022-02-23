@@ -136,7 +136,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Transaction</span><span class="params">(<span name="from">from: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="to">to: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="amount">amount: <span class="extype" name="scala.Int">Int</span></span>, <span name="timestamp">timestamp: <span class="extype" name="scala.Long">Long</span> = <span class="symbol">-1</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">Transaction</span><span class="params">(<span name="sender">sender: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="receiver">receiver: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="amount">amount: <span class="extype" name="scala.Int">Int</span></span>, <span name="timestamp">timestamp: <span class="extype" name="scala.Long">Long</span> = <span class="symbol">-1</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
@@ -192,9 +192,9 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="blockchain.Transaction#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(from:String,to:String,amount:Int,timestamp:Long):blockchain.Transaction"></a><a id="&lt;init&gt;:Transaction"></a>
+      <a id="&lt;init&gt;(sender:String,receiver:String,amount:Int,timestamp:Long):blockchain.Transaction"></a><a id="&lt;init&gt;:Transaction"></a>
       <span class="permalink">
-      <a href="../blockchain/Transaction.html#&lt;init&gt;(from:String,to:String,amount:Int,timestamp:Long):blockchain.Transaction" title="Permalink">
+      <a href="../blockchain/Transaction.html#&lt;init&gt;(sender:String,receiver:String,amount:Int,timestamp:Long):blockchain.Transaction" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -203,7 +203,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Transaction</span><span class="params">(<span name="from">from: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="to">to: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="amount">amount: <span class="extype" name="scala.Int">Int</span></span>, <span name="timestamp">timestamp: <span class="extype" name="scala.Long">Long</span> = <span class="symbol">-1</span></span>)</span>
+        <span class="name">Transaction</span><span class="params">(<span name="sender">sender: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="receiver">receiver: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="amount">amount: <span class="extype" name="scala.Int">Int</span></span>, <span name="timestamp">timestamp: <span class="extype" name="scala.Long">Long</span> = <span class="symbol">-1</span></span>)</span>
       </span>
       
       
@@ -339,22 +339,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="blockchain.Transaction#from" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="from:String"></a>
-      <span class="permalink">
-      <a href="../blockchain/Transaction.html#from:String" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">from</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      
-      
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -450,6 +434,38 @@
                 <span class="name">@HotSpotIntrinsicCandidate</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="blockchain.Transaction#receiver" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="receiver:String"></a>
+      <span class="permalink">
+      <a href="../blockchain/Transaction.html#receiver:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">receiver</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      
+    </li><li name="blockchain.Transaction#sender" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sender:String"></a>
+      <span class="permalink">
+      <a href="../blockchain/Transaction.html#sender:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sender</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -479,22 +495,6 @@
       </span>
       <span class="symbol">
         <span class="name">timestamp</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
-      </span>
-      
-      
-    </li><li name="blockchain.Transaction#to" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="to:String"></a>
-      <span class="permalink">
-      <a href="../blockchain/Transaction.html#to:String" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">to</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
       

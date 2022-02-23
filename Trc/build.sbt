@@ -19,7 +19,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-remote" % akkaVersion,
   "com.typesafe.akka" %% "akka-persistence-typed" % akkaVersion,
   "de.heikoseeberger" %% "akka-http-json4s" % "1.16.1",
-  "org.json4s" %% "json4s-native" % "3.5.2")
+  "org.json4s" %% "json4s-native" % "3.5.2",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.5.0")
 
 val circeVersion = "0.14.1"
 

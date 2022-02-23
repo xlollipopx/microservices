@@ -4,89 +4,87 @@
 [0m[[0m[0minfo[0m] [0m[0mStep 1/20 : FROM openjdk:8 as stage0[0m
 [0m[[0m[0minfo[0m] [0m[0m ---> 47482c603b2a[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 2/20 : LABEL snp-multi-stage="intermediate"[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in 5a406e42741c[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 5a406e42741c[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> 61bf0be568c1[0m
-[0m[[0m[0minfo[0m] [0m[0mStep 3/20 : LABEL snp-multi-stage-id="21b94137-b472-4167-85fe-5cf9d9090934"[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in 1b3ffb627777[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 1b3ffb627777[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> 3bacc387afb9[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 1adbddd9ca80[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 1adbddd9ca80[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 1789ae7142b4[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 3/20 : LABEL snp-multi-stage-id="4c13574b-6e21-41ce-802c-aab8f2c5ec80"[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in ac4abb1e463d[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container ac4abb1e463d[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 5093b3668476[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 4/20 : WORKDIR /opt/docker[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in ca0f4588e590[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container ca0f4588e590[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> 0ebc877566ea[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 85455e82c055[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 85455e82c055[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> cd07d5988d17[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 5/20 : COPY 1/opt /1/opt[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> b3d76421035e[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 57e557722a3c[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 6/20 : COPY 2/opt /2/opt[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> 241433aecbc2[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 4e4be31d5aa6[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 7/20 : USER root[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in d6453a2f697d[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container d6453a2f697d[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> 112ecdda179a[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 368704b35d70[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 368704b35d70[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> d8d631f509bb[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 8/20 : RUN ["chmod", "-R", "u=rX,g=rX", "/1/opt/docker"][0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in 16a76c5c1a48[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 16a76c5c1a48[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> b83474ceba9b[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 55281e5ba96f[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 55281e5ba96f[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 9f234153a095[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 9/20 : RUN ["chmod", "-R", "u=rX,g=rX", "/2/opt/docker"][0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in 199e0d950ddf[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 199e0d950ddf[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> b5816720e6f0[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 2ab39e6c4e92[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 2ab39e6c4e92[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 87b3435c3db8[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 10/20 : RUN ["chmod", "u+x,g+x", "/1/opt/docker/bin/trc"][0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in 3d755eecd133[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 3d755eecd133[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> cf3b9e509539[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 84d281abe982[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 84d281abe982[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 591f584b3a9a[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 11/20 : FROM openjdk:8 as mainstage[0m
 [0m[[0m[0minfo[0m] [0m[0m ---> 47482c603b2a[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 12/20 : USER root[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in eee56eee476c[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container eee56eee476c[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> cb66e9b1898f[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Using cache[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 1300ad02247c[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 13/20 : RUN id -u demiourgos728 1>/dev/null 2>&1 || (( getent group 0 1>/dev/null 2>&1 || ( type groupadd 1>/dev/null 2>&1 && groupadd -g 0 root || addgroup -g 0 -S root )) && ( type useradd 1>/dev/null 2>&1 && useradd --system --create-home --uid 1001 --gid 0 demiourgos728 || adduser -S -u 1001 -G root demiourgos728 ))[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in bc5151015300[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container bc5151015300[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> dd9fcacf949d[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Using cache[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> c97276aa08da[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 14/20 : WORKDIR /opt/docker[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in 7213c6f53b87[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 7213c6f53b87[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> 3f1d49f2c426[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Using cache[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 0e0ef39828f6[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 15/20 : COPY --from=stage0 --chown=demiourgos728:root /1/opt/docker /opt/docker[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> 3b24564ffa6b[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Using cache[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> e74ae452ce95[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 16/20 : COPY --from=stage0 --chown=demiourgos728:root /2/opt/docker /opt/docker[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> 4ecef8473a23[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 3f40809a8e5c[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 17/20 : EXPOSE 9000 2552[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in b45665f14a01[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container b45665f14a01[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> 8cab98507073[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in f22008ab0bba[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container f22008ab0bba[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 8ef7c800c594[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 18/20 : USER 1001:0[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in 407c301655b8[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 407c301655b8[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> ef48117d536d[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 2c38834eef59[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 2c38834eef59[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> cb4aad864a28[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 19/20 : ENTRYPOINT ["/opt/docker/bin/trc"][0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in 90e9b56f1190[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 90e9b56f1190[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> e5ea243198e1[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 8195b2daebef[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 8195b2daebef[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> d9e573ebc39f[0m
 [0m[[0m[0minfo[0m] [0m[0mStep 20/20 : CMD [][0m
-[0m[[0m[0minfo[0m] [0m[0m ---> Running in acff41ec497f[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container acff41ec497f[0m
-[0m[[0m[0minfo[0m] [0m[0m ---> c21524e79073[0m
-[0m[[0m[0minfo[0m] [0m[0mSuccessfully built c21524e79073[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Running in 866851d4ce91[0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate container 866851d4ce91[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> fd95224cc724[0m
+[0m[[0m[0minfo[0m] [0m[0mSuccessfully built fd95224cc724[0m
 [0m[[0m[0minfo[0m] [0m[0mSuccessfully tagged trc:1.0.0[0m
-[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate image(s) (labeled "snp-multi-stage-id=21b94137-b472-4167-85fe-5cf9d9090934") [0m
+[0m[[0m[0minfo[0m] [0m[0mRemoving intermediate image(s) (labeled "snp-multi-stage-id=4c13574b-6e21-41ce-802c-aab8f2c5ec80") [0m
 [0m[[0m[0minfo[0m] [0m[0mDeleted Images:[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:cf3b9e509539ce7500a3e607de98f0051c37b89d0956dd92526fa1b4471a37e4[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:4ce67d659a5768a2790f9504cf2c766be816fbad04cdc15e12d8b5de624d569e[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:b5816720e6f06bff881d8b417cfa7fb3f880081f2a85f0eb378d0aa532b6a285[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:44cf2436bccf6e8c5c188ab4d9cfc2e576e1f1d99d61f2d6de6d557dcbcd86b5[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:b83474ceba9b89008d0101d261bb9447d6e11da4dbb0aea7930f481c9e6ca413[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:ccbea2829afebb16b565d792a62b88a7bc8088f4421bcddffb4a236912a2b3df[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:112ecdda179a86cab68df62a60e40d25a87b7cd2b25191e18ba78d4a610b9b86[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:241433aecbc2743214b664f544b22555c062e7da06771d4a762274ecc6b61b87[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:9cadd41695ba6480d7f08449a0097bdebf220e816a3d0c7cbdda724dd71f2a1e[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:b3d76421035e7107a2ead44690e6748a41ba4e54b8ed17bfabcd79d0e01ed1b1[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:e117836deddb2c3373937c877fc2107c848ccb8b84f0542bdb12a1047914beec[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:0ebc877566eaf2fcea268afbb47b0f6b9eaf3837167369044265e8198e2b38b2[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:88f7147ce9acd647325c801ecea15a75c3889f087a22f73da392cf7c677a5d30[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:3bacc387afb97debac666adc7813069ec22d8ff1935c95d2f026d649cc868b66[0m
-[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:61bf0be568c17e252b1d31f6276846f260f917b2197517f8062cdb23debeda0c[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:591f584b3a9a8322f2bfdb4e6d9fc141d344cdbb85f79ad624a9d6d7940af750[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:30f0a6e0a8c8ecba43eba41988111e59b2d083c307a7dcbaa594c036d812220d[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:87b3435c3db80075871af75217ba7b9ec0f67489ac080cedba823b3b9e4a4e2a[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:f0719909adadb5d79bc48c0b4138bf79276df75d0aa8bc20fbdb34f513a047b7[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:9f234153a0953e3694769e0cd91d475002225f87eccf5f06a72ebf2c1255a83b[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:cce2b4d24877fce55d97365aaa3edd0ce7c62ab5a76c728aef00547176107f94[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:d8d631f509bb153955caefec5c62868f8f674f8c0b528a98f3bbe5873de95613[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:4e4be31d5aa68607dda4c52b53f666036b0e40eaefa28f26e01d87ef115e6d9b[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:920cd4505a58a27fecef1b0dfc6268cbd1e42d9bc6e2ea787dc4ee829a07b3dc[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:57e557722a3ca4d84ad24d51a8b16f354876c0a051d927fdb660bb1c92fa29d2[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:6c078edd67765e0f636250af04aa81c9e0dbc6715bc14674113c2b78ea4a707e[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:cd07d5988d179e5bfac163b7a5f5d45337b4122eb9d1989fe58048c40eaa5aad[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:8c1f190edc8f951fd8c4225ef8cbb0fd97ae6b80677b7a22d3ad79d79da8764e[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:5093b3668476ddbe02eb2a4731358f00ef4ac92dd69082c5cf7fda2a53eb7ff1[0m
+[0m[[0m[0minfo[0m] [0m[0mdeleted: sha256:1789ae7142b485166a4769f251b5ba2e8e64b55a675c6c30c9eb61bc89bd814a[0m
 [0m[[0m[0minfo[0m] [0m[0mTotal reclaimed space: 115MB[0m
 [0m[[0m[0minfo[0m] [0m[0mBuilt image trc with tags [1.0.0][0m

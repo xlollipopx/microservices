@@ -573,6 +573,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="actors.BlockChainActor#logger" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logger:java.util.logging.Logger"></a><a id="logger:Logger"></a>
+      <span class="permalink">
+      <a href="../actors/BlockChainActor.html#logger:java.util.logging.Logger" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logger</span><span class="result">: <span class="extype" name="java.util.logging.Logger">Logger</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="actors.BlockChainActor">BlockChainActor</a> → <a href="../blockchain/BlockchainNetwork.html" class="extype" name="blockchain.BlockchainNetwork">BlockchainNetwork</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -752,9 +768,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CompositeActor.html" class="extype" name="actors.CompositeActor">CompositeActor</a> → Actor</dd></dl></div>
     </li><li name="actors.CompositeActor#receiver" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="receiver(next:CompositeActor.this.Receive):Unit"></a><a id="receiver(Receive):Unit"></a>
+      <a id="receiver(next:CompositeActor.this.Receive,receivers:CompositeActor.this.Receive):CompositeActor.this.Receive"></a><a id="receiver(Receive,Receive):Receive"></a>
       <span class="permalink">
-      <a href="../actors/BlockChainActor.html#receiver(next:CompositeActor.this.Receive):Unit" title="Permalink">
+      <a href="../actors/BlockChainActor.html#receiver(next:CompositeActor.this.Receive,receivers:CompositeActor.this.Receive):CompositeActor.this.Receive" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -763,23 +779,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">receiver</span><span class="params">(<span name="next">next: <a href="#Receive=akka.actor.Actor.Receive" class="extmbr" name="actors.BlockChainActor.Receive">Receive</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CompositeActor.html" class="extype" name="actors.CompositeActor">CompositeActor</a></dd></dl></div>
-    </li><li name="actors.CompositeActor#receivers" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="receivers:CompositeActor.this.Receive"></a><a id="receivers:Receive"></a>
-      <span class="permalink">
-      <a href="../actors/BlockChainActor.html#receivers:CompositeActor.this.Receive" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">receivers</span><span class="result">: <a href="#Receive=akka.actor.Actor.Receive" class="extmbr" name="actors.BlockChainActor.Receive">Receive</a></span>
+        <span class="name">receiver</span><span class="params">(<span name="next">next: <a href="#Receive=akka.actor.Actor.Receive" class="extmbr" name="actors.BlockChainActor.Receive">Receive</a></span>, <span name="receivers">receivers: <a href="#Receive=akka.actor.Actor.Receive" class="extmbr" name="actors.BlockChainActor.Receive">Receive</a> = <span class="symbol"><span class="name"><a href="../akka/index.html">emptyBehavior</a></span></span></span>)</span><span class="result">: <a href="#Receive=akka.actor.Actor.Receive" class="extmbr" name="actors.BlockChainActor.Receive">Receive</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CompositeActor.html" class="extype" name="actors.CompositeActor">CompositeActor</a></dd></dl></div>

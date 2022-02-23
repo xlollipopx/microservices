@@ -3,8 +3,8 @@ import akka.actor.{Actor, ActorLogging, ActorRef, ActorSelection, Terminated}
 import akka.pattern.pipe
 import akka.util.Timeout
 import actors.CompositeActor
-import akka.actor.typed.Logger
 import p2p.PeerToPeer.{AddPeer, GetPeers, HandShake, Peers, ResolvedPeer}
+
 import scala.concurrent.ExecutionContextExecutor
 import java.util.concurrent.TimeUnit
 import scala.concurrent.duration.Duration
