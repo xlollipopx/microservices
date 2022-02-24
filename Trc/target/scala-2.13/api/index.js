@@ -1,1 +1,0 @@
-Index.PACKAGES = {"akka" : [], "akka.pattern" : []};
