@@ -9,11 +9,10 @@ import http.Routes
 
 import scala.concurrent.ExecutionContextExecutor
 
+object Application extends App with Routes {
 
-object Application extends App with Routes{
-
-  implicit val system: ActorSystem = ActorSystem("BlockChain")
-  implicit val materializer: ActorMaterializer = ActorMaterializer()
+  implicit val system:           ActorSystem              = ActorSystem("BlockChain")
+  implicit val materializer:     ActorMaterializer        = ActorMaterializer()
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
   val blockChainActor = system.actorOf(BlockChainActor.props(BlockChain()), "blockChainActor")
@@ -23,7 +22,7 @@ object Application extends App with Routes{
 
   val seedHost = config.getString("blockchain.seedHost")
 
-  if ( seedHost.nonEmpty ) {
+  if (seedHost.nonEmpty) {
     logger.info(s"Attempting to connect to seed-host ${seedHost}")
   } else {
     logger.info("No seed host configured, waiting for messages.")
@@ -31,4 +30,3 @@ object Application extends App with Routes{
 
   Http().bindAndHandle(routes, config.getString("http.interface"), config.getInt("http.port"))
 }
-

@@ -17,7 +17,7 @@ case class Block(
   hash:         String
 )
 
-case class Transaction(sender: String, receiver: String, amount: Int, timestamp: Long = -1)
+final case class Transaction(sender: String, receiver: String, amount: Int, timestamp: Long = -1)
 object GenesisBlock
   extends Block(
     0,
@@ -64,7 +64,7 @@ class BlockChain private (
     val nextIndex     = previousBlock.index + 1
     val nonce         = 0
     val nextTimestamp = new Date().getTime / 1000
-    val transactions  = pendingTransactions.toList
+    val transactions  = transactionsToMine.toList
     val initHash      = calculateHash(nextIndex, previousBlock.hash, nonce, transactions, nextTimestamp, blockData)
     val block         = Block(nextIndex, previousBlock.hash, nonce, transactions, nextTimestamp, blockData, initHash)
     mine(block)
@@ -77,6 +77,7 @@ class BlockChain private (
     } else {
       val hash =
         calculateHash(block.index, block.previousHash, block.nonce + 1, block.transactions, block.timestamp, block.data)
+
       val newBlock =
         Block(block.index, block.previousHash, block.nonce + 1, block.transactions, block.timestamp, block.data, hash)
       mine(newBlock)

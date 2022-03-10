@@ -1,0 +1,24 @@
+{
+  "name": "blockchain-ui",
+  "version": "1.0.0",
+  "description": "js",
+  "main": "index.js",
+  "scripts": {
+    "serve": "parcel ./index.html"
+  },
+  "keywords": [
+    "blockchain",
+    "js"
+  ],
+  "author": "Anton",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-react": "^7.16.7",
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "js-cookie": "^3.0.1",
+    "react": "^17.0.2"
+  }
+}

@@ -1,23 +1,21 @@
 package p2p
-import akka.actor.{Actor, ActorLogging, ActorRef, ActorSelection, Terminated}
+import actors.CompositeActor
+import akka.actor.ActorRef
 import akka.pattern.pipe
 import akka.util.Timeout
-import actors.CompositeActor
-import p2p.PeerToPeer.{AddPeer, GetPeers, HandShake, Peers, ResolvedPeer}
+import p2p.PeerToPeer._
 
-import scala.concurrent.ExecutionContextExecutor
 import java.util.concurrent.TimeUnit
+import scala.concurrent.ExecutionContextExecutor
 import scala.concurrent.duration.Duration
-
-
 
 object PeerToPeer {
 
-  case class AddPeer( address: String )
+  case class AddPeer(address: String)
 
-  case class ResolvedPeer( actorRef: ActorRef )
+  case class ResolvedPeer(actorRef: ActorRef)
 
-  case class Peers( peers: Seq[String] )
+  case class Peers(peers: Seq[String])
 
   case object GetPeers
 
@@ -27,12 +25,12 @@ object PeerToPeer {
 trait PeerToPeer {
   this: CompositeActor =>
 
-  implicit val timeout: Timeout = Timeout(Duration(5, TimeUnit.SECONDS))
+  implicit val timeout:          Timeout                  = Timeout(Duration(5, TimeUnit.SECONDS))
   implicit val executionContext: ExecutionContextExecutor = context.system.dispatcher
 
   var peers: Set[ActorRef] = Set.empty
 
-  def broadcast(message: Any): Unit ={
+  def broadcast(message: Any): Unit = {
     peers.foreach(_ ! message)
   }
 
@@ -40,7 +38,7 @@ trait PeerToPeer {
     case AddPeer(peerAddress) =>
       context.actorSelection(peerAddress).resolveOne().map(ResolvedPeer).pipeTo(self)
     case ResolvedPeer(networkPeerRef) =>
-      if(!peers.contains(networkPeerRef)) {
+      if (!peers.contains(networkPeerRef)) {
         networkPeerRef ! HandShake
         peers += networkPeerRef
         networkPeerRef ! GetPeers
@@ -56,8 +54,4 @@ trait PeerToPeer {
 
   }
 
-
-
 }
-
-
