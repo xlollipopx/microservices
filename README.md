@@ -8,6 +8,11 @@ peer2peer network. When someone installed the app and wants to become a part of 
 connect. When someone wants to make a transaction and write it to the blockchain, this transaction will be sent to other nodes and validated by them.
 Also when some node mined a block, this block is broadcasted to other nodes and validated by them, and when validation is successful, block is added 
 to the blockchain.
+To mine a block you need to solve the cryptographic task: 
+if current block hash doesn't contain n zeros in the beginning, we increase nonce field by one and do this step until we have n zeros in the beginning
+of the hash. Hash is evaluated using all field in the block.
+![image](https://user-images.githubusercontent.com/64196164/160470672-ac59612e-9e56-49d3-af92-6731fa405f22.png)
+
 
 
 
