@@ -1,0 +1,43 @@
+== Info: Could not resolve host: POST
+== Info: Closing connection 0
+== Info:   Trying 127.0.0.1:9000...
+== Info: TCP_NODELAY set
+== Info: Connected to localhost (127.0.0.1) port 9000 (#1)
+=> Send header, 136 bytes (0x88)
+0000: POST /login HTTP/1.1
+0016: Host: localhost:9000
+002c: User-Agent: curl/7.68.0
+0045: Accept: */*
+0052: Content-Type: application/json
+0072: Content-Length: 41
+0086: 
+=> Send data, 41 bytes (0x29)
+0000: {"username":"admin", "password":"admin" }
+== Info: upload completely sent off: 41 out of 41 bytes
+== Info: Mark bundle as not supporting multiuse
+<= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+<= Recv header, 32 bytes (0x20)
+0000: Access-Control-Allow-Origin: *
+<= Recv header, 40 bytes (0x28)
+0000: Access-Control-Allow-Credentials: true
+<= Recv header, 77 bytes (0x4d)
+0000: Access-Control-Allow-Headers: Authorization, Content-Type, X-Req
+0040: uested-With
+<= Recv header, 163 bytes (0xa3)
+0000: Access token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZ
+0040: G1pbiIsImV4cCI6MTY0Nzg1NTU1MiwiaWF0IjoxNjQ3NzY5MTUyfQ.Ttj80_fW2I
+0080: 6PiHKmEjwGhNiZVyToiB-C8O_hYIC3F5c
+<= Recv header, 26 bytes (0x1a)
+0000: Server: akka-http/10.2.9
+<= Recv header, 37 bytes (0x25)
+0000: Date: Sun, 20 Mar 2022 09:39:12 GMT
+<= Recv header, 41 bytes (0x29)
+0000: Content-Type: text/plain; charset=UTF-8
+<= Recv header, 19 bytes (0x13)
+0000: Content-Length: 2
+<= Recv header, 2 bytes (0x2)
+0000: 
+<= Recv data, 2 bytes (0x2)
+0000: OK
+== Info: Connection #1 to host localhost left intact

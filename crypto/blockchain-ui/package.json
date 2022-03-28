@@ -1,0 +1,28 @@
+{
+  "name": "blockchain-ui",
+  "version": "1.0.0",
+  "description": "js",
+  "main": "signin.js",
+  "scripts": {
+    "serve": "parcel signin.html"
+  },
+  "keywords": [
+    "blockchain",
+    "js"
+  ],
+  "author": "Anton",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-react": "^7.16.7",
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "axios-logger": "^2.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "js-cookie": "^3.0.1",
+    "react": "^17.0.2"
+  }
+}

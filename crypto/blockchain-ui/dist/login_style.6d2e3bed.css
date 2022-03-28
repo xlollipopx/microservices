@@ -1,0 +1,82 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: Monospaced, serif;
+}
+
+main {
+    background: #F1F5FE;
+    height: 91vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.form-title {
+    color: #30507D;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    padding: 10px;
+}
+
+input {
+    font-size: 14px;
+    line-height: 16px;
+    height: 45px;
+    width: 100%;
+    border: 2px solid #E9f2ff;
+    border-radius: 5px;
+    padding-left: 25px;
+}
+
+.register-form-container {
+    max-width: 415px;
+    background: #ffffff;
+    box-shadow: 0px 6px 50px rgba(217, 229, 255, 0.7);
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+}
+
+.form-field{
+    margin-bottom: 20px;
+}
+
+.button{
+    display: block;
+    height: 45px;
+    background: #4933f5;
+    border-radius: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 45px;
+    width: 100%;
+}
+
+.form_buttons {
+
+}
+
+a.button {
+    text-decoration: none;
+
+}
+.hrefs {
+    padding-left: 3%;
+}
+
+.unauthorized {
+    margin-top: 10px;
+    padding-left: 30%;
+    color: red;
+}
+
+/*# sourceMappingURL=/login_style.6d2e3bed.css.map */
