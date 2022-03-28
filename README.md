@@ -10,7 +10,7 @@ connect. When someone wants to make a transaction and write it to the blockchain
 Also when some node mined a block, this block is broadcasted to other nodes and validated by them, and when validation is successful, block is added 
 to the blockchain.
 
-###Mining
+####Mining
 To mine a block you need to solve the cryptographic task: 
 if current block hash doesn't contain n zeros in the beginning, we increase nonce field by one and do this step until we have n zeros in the beginning
 of the hash. Hash is evaluated using all field in the block.
