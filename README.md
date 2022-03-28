@@ -3,6 +3,7 @@
 
 Project description
 -------------------
+    Mining
 This is a simplified custom blockchain that is implemented on Scala with Akka. Each computer that run this app is a node in 
 peer2peer network. When someone installed the app and wants to become a part of the peer2peer network, he need to add some seed node address to
 connect. When someone wants to make a transaction and write it to the blockchain, this transaction will be sent to other nodes and validated by them.
@@ -21,7 +22,16 @@ These functions(in BlockChain class) are used to mine blocks:
 
       def generateNextBlock(blockData: String): Block
       final def mine(block: Block): Block 
+      
 
+Also we can fast and easily check if a block was mined in a legal way(this is called proof of work):
+
+
+      def validBlock(newBlock: Block, previousBlock: Block): Boolean =
+        previousBlock.index + 1 == newBlock.index &&
+        previousBlock.hash == newBlock.previousHash &&
+        calculateHashForBlock(newBlock) == newBlock.hash
+        
 
 
 Build and run
