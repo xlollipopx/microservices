@@ -16,6 +16,12 @@ of the hash. Hash is evaluated using all field in the block.
 ![image](https://user-images.githubusercontent.com/64196164/160470672-ac59612e-9e56-49d3-af92-6731fa405f22.png)
 
 
+These functions(in BlockChain class) are used to mine blocks:
+
+
+      def generateNextBlock(blockData: String): Block
+      final def mine(block: Block): Block 
+
 
 
 Build and run
