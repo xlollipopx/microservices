@@ -10,10 +10,11 @@ connect. When someone wants to make a transaction and write it to the blockchain
 Also when some node mined a block, this block is broadcasted to other nodes and validated by them, and when validation is successful, block is added 
 to the blockchain.
 
-  ##Mining
+Mining
+------
 To mine a block you need to solve the cryptographic task: 
 if current block hash doesn't contain n zeros in the beginning, we increase nonce field by one and do this step until we have n zeros in the beginning
-of the hash. Hash is evaluated using all field in the block.
+of the hash. Hash is evaluated using all field in the block. A user who mined a block gets reward from the system.
 
 
 ![image](https://user-images.githubusercontent.com/64196164/160470672-ac59612e-9e56-49d3-af92-6731fa405f22.png)
@@ -35,6 +36,10 @@ Also we can fast and easily check if a block was mined in a legal way(this is ca
         calculateHashForBlock(newBlock) == newBlock.hash
         
 
+Transactions
+------------
+When someone wants to make a transaction and write it to the blockchain, this transaction will be sent to other nodes and validated by them.
+After validation it will be added to pending transactions and appear in the next mined block. Also when a message with a blockchain version from another node is received, it is compared with a blockchain version on the current node, and if the received blockchain is longer, then the blockchain on the current node is replaced by received one. 
 
 Build and run
 -------------
