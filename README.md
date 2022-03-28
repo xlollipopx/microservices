@@ -10,7 +10,7 @@ Building, running, etc
 
 The app can be run using docker-compose.
 
-Start by building the docker container
+First build docker image:
 
     sbt docker:publshLocal
 
