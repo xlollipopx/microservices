@@ -1,11 +1,18 @@
 # Blockchain implemented in Scala + Akka
 
-## Project description 
+
+Project description
+-------------------
+This is a simplified custom blockchain that is implemented on Scala with Akka. Each computer that run this app is a node in 
+peer2peer network. When someone installed the app and wants to become a part of the peer2peer network, he need to add some seed node address to
+connect. When someone wants to make a transaction and write it to the blockchain, this transaction will be sent to other nodes and validated by them.
+Also when some node mined a block, this block is broadcasted to other nodes and validated by them, and when validation is successful, block is added 
+to the blockchain.
 
 
 
-Building, running, etc
-----------------------
+Build and run
+-------------
 
 
 The app can be run using docker-compose.
@@ -23,4 +30,23 @@ This will start 4 nodes, which will first connect to node1 (the seed node) and t
 
 To create an account use:
 
-    curl -v -H POST http://localhost:9000/signup -H 'Content-Type: application/json' -d '{"username":"admin", "password":"admin" }'
+    curl -v -H POST http://localhost:9000/signup -H 'Content-Type: application/json' -d '{"username":"http://localhost:9000", "password":"admin" }'
+    
+As a username use server local address.
+
+Visualisation:
+
+Open  blockchain-ui and run:
+
+    npm run serve
+    
+  
+  
+
+   
+
+
+    
+    
+    
+
