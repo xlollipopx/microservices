@@ -4,11 +4,8 @@
 Project description
 -------------------
   
-This is a simplified custom blockchain that is implemented on Scala with Akka. Each computer that run this app is a node in 
-peer2peer network. When someone installed the app and wants to become a part of the peer2peer network, he need to add some seed node address to
-connect. When someone wants to make a transaction and write it to the blockchain, this transaction will be sent to other nodes and validated by them.
-Also when some node mined a block, this block is broadcasted to other nodes and validated by them, and when validation is successful, block is added 
-to the blockchain.
+This is a simplified custom blockchain that is implemented on Scala with Akka.
+
 
 Mining
 ------
@@ -43,6 +40,19 @@ After validation it will be added to pending transactions(ledger) and appear in 
 
 
 ![image](https://user-images.githubusercontent.com/64196164/160535194-84462207-419c-47dd-b1a0-b067d8b00993.png)
+
+
+
+Peer2peer
+---------
+Peer2peer network is implemented with Akka remoute. When someone installed the app and wants to become a part of the peer2peer network, he need to add some seed node address to connect. 
+When someone wants to make a transaction and write it to the blockchain, this transaction will be sent to other nodes and validated by them.
+Also when some node mined a block, this block is broadcasted to other nodes and validated by them, and when validation is successful, block is added 
+to the blockchain.
+
+
+![image](https://user-images.githubusercontent.com/64196164/160535787-7aebc33e-0360-4239-a37f-9b9e6b00ce4d.png)
+
 
 
 
