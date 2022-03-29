@@ -39,7 +39,7 @@ Also we can fast and easily check if a block was mined in a legal way(this is ca
 Transactions
 ------------
 When someone wants to make a transaction and write it to the blockchain, this transaction will be sent to other nodes and validated by them.
-After validation it will be added to pending transactions and appear in the next mined block. Also when a message with a blockchain version from another node is received, it is compared with a blockchain version on the current node, and if the received blockchain is longer, then the blockchain on the current node is replaced by received one. 
+After validation it will be added to pending transactions(ledger) and appear in the next mined block. Also when a message with a blockchain version from another node is received, it is compared with a blockchain version on the current node, and if the received blockchain is longer, then the blockchain on the current node is replaced by received one. 
 
 
 ![image](https://user-images.githubusercontent.com/64196164/160535194-84462207-419c-47dd-b1a0-b067d8b00993.png)
