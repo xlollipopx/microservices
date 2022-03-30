@@ -43,7 +43,6 @@ class FileProcessor {
 
   def getSecretKey: String = {
     loadSteam()
-    println("KEEEEY:  " + prop.containsKey("secretKey"))
     prop.getProperty("secretKey")
   }
 

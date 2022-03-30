@@ -41,7 +41,7 @@ trait Routes extends Json4sSupport with JsonHelper {
     .withExposedHeaders(scala.collection.immutable.Seq("Access-token"))
 
   val unauthRoutes: Route = post {
-    //curl -v -H POST http://localhost:9000/signup -H 'Content-Type: application/json' -d '{"username":"admin", "password":"admin" }'
+    //curl -v -H POST http://localhost:9000/signup -H 'Content-Type: application/json' -d '{"username":"http://localhost:9000", "password":"admin" }'
     path("signup") {
       entity(as[String]) { data =>
         val req = parse(data).extract[Credentials]
@@ -119,14 +119,14 @@ trait Routes extends Json4sSupport with JsonHelper {
         //curl -H "Authorization: " -X POST -d "Anton" http://localhost:9000/mineBlock
         path("mineBlock") {
           Auth.authenticated { user =>
-            entity(as[String]) { data =>
+            entity(as[String]) { _ =>
               complete((blockChainActor ? Mine(user)).mapTo[String].map { msg: String =>
                 msg
               })
             }
           }
         } ~
-          // curl -H "Authorization: " -X POST 'Content-Type: application/json' -d '{"peer": "akka.tcp://BlockChain@node1:2552/user/blockChainActor"}' http://localhost:9000/addPeer
+          // curl -H "Authorization: " -X POST 'Content-Type: application/json' -d '{"body": {"peer": "akka.tcp://BlockChain@node2:2552/user/blockChainActor"}, "headers": {"Authorization": ""}}' http://localhost:9000/addPeer
           path("addPeer") {
             Auth.authenticated { _ =>
               entity(as[String]) { data =>

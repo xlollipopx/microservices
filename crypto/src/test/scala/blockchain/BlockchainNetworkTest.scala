@@ -8,6 +8,7 @@ import blockchain.BlockChain.GenesisBlock
 import blockchain.BlockchainNetwork.{AddBlockRequest, Balance, BlockchainQuery}
 import blockchain.Mining.Mine
 import org.scalatest.{BeforeAndAfterAll, FlatSpecLike, GivenWhenThen, Matchers}
+import p2p.PeerToPeer.AddPeer
 
 import java.util.concurrent.TimeUnit
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -21,11 +22,13 @@ class BlockchainNetworkTest
     with Matchers {
 
   trait TestActor {
-    implicit val timeout: Timeout = Timeout(5, TimeUnit.SECONDS)
+    implicit val timeout: Timeout    = Timeout(5, TimeUnit.SECONDS)
+    val blockChain:       BlockChain = BlockChain()
+    val blockChainActor:  ActorRef   = system.actorOf(BlockChainActor.props(blockChain))
 
-    val blockChain:      BlockChain = BlockChain()
-    val peerToPeer:      TestProbe  = TestProbe()
-    val blockChainActor: ActorRef   = system.actorOf(BlockChainActor.props(blockChain))
+    val blockChainTwo:      BlockChain = BlockChain()
+    val blockChainActorTwo: ActorRef   = system.actorOf(BlockChainActor.props(blockChainTwo))
+
   }
 
   override def afterAll: Unit = {
@@ -73,6 +76,17 @@ class BlockchainNetworkTest
     Thread.sleep(5000)
     (blockChainActor ? BlockchainQuery).map { case chain: BlockChain =>
       assert(chain.latestBlock.transactions.contains(transaction))
+    }
+  }
+
+  it should "send mined block from one actor to another" in new TestActor {
+
+    blockChainActor ! AddPeer(blockChainActorTwo.toString())
+    blockChainActor ! Mine("Alice")
+    Thread.sleep(5000)
+
+    (blockChainActorTwo ? BlockchainQuery).map { case chain: BlockChain =>
+      assert(chain.getBlockchainSize == 1)
     }
   }
 
