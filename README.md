@@ -64,7 +64,7 @@ The app can be run using docker-compose.
 
 First build docker image:
 
-    sbt docker:publshLocal
+    sbt docker:publishLocal
 
 
 Then run
