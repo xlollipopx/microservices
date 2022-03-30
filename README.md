@@ -90,12 +90,3 @@ Open  blockchain-ui and run:
 
    
 
-
-    
-    
-    
-<<<<<<< HEAD
-
-=======
->>>>>>> d2703b148b2f074ee445557e08fcc3f1bafe017d
-
