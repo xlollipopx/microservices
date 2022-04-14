@@ -2,7 +2,7 @@
   "name": "blockchain-ui",
   "version": "1.0.0",
   "description": "js",
-  "main": "signin.js",
+  "main": "login.js",
   "scripts": {
     "serve": "parcel signin.html"
   },

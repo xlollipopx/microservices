@@ -4,8 +4,8 @@ import actors.CompositeActor
 import akka.actor.ActorRef
 import akka.pattern.pipe
 import akka.util.Timeout
-import blockchain.BlockChain
-import blockchain.BlockchainNetwork.BlockchainQuery
+import blockchain.{Block, BlockChain}
+import blockchain.BlockchainNetwork.{BlockchainIncome, BlockchainQuery, BlocksIncome, BlocksQuery}
 import p2p.PeerToPeer._
 
 import java.util.concurrent.TimeUnit
@@ -46,8 +46,8 @@ trait PeerToPeer {
       if (!peers.contains(networkPeerRef) && networkPeerRef != context.self) {
         networkPeerRef ! HandShake
         peers += networkPeerRef
-        networkPeerRef ! BlockchainQuery
         networkPeerRef ! GetPeers
+        networkPeerRef ! BlocksQuery
       }
 
     case HandShake =>
@@ -56,11 +56,13 @@ trait PeerToPeer {
     case GetPeers =>
       sender() ! Peers(peers.toSeq.map(_.path.toSerializationFormat))
 
-    case Peers(seq) => seq.foreach(self ! AddPeer(_))
+    case Peers(seq) =>
+      log.info(s"ADDING PEERS ${seq}")
+      seq.foreach(self ! AddPeer(_))
 
-    case bc: BlockChain =>
+    case BlockchainIncome(bc) =>
       log.info(s"Receive blockchain, length: ${bc.getBlockchainSize}")
-      if (bc.getBlockchainSize > blockChain.getBlockchainSize && validateNewBlockChain(blockChain, bc)) {
+      if (bc.getBlockchainSize > blockChain.getBlockchainSize && validateNewBlockChain(blockChain, bc.allBlocks)) {
 
         bc.allBlocks
           .slice(blockChain.getBlockchainSize, bc.getBlockchainSize)
@@ -70,25 +72,33 @@ trait PeerToPeer {
 
         sender ! s"Chain updated, new size: ${blockChain.getBlockchainSize}"
       }
+
+    case BlocksIncome(bc) =>
+      log.info(s"Receive blockchain, length: ${bc.length}")
+      if (bc.length > blockChain.getBlockchainSize && validateNewBlockChain(blockChain, bc)) {
+        bc
+          .slice(blockChain.getBlockchainSize, bc.length)
+          .foreach(el => blockChain.addBlock(el))
+
+        log.info("New size: " + blockChain.getBlockchainSize)
+
+        sender ! s"Chain updated, new size: ${blockChain.getBlockchainSize}"
+      }
   }
 
-  def validateNewBlockChain(oldChain: BlockChain, newChain: BlockChain): Boolean = {
-    if (oldChain.allBlocks == newChain.allBlocks.slice(0, oldChain.getBlockchainSize)) {
+  def validateNewBlockChain(oldChain: BlockChain, newChain: Seq[Block]): Boolean = {
 
-      val remains = newChain.allBlocks
-        .slice(oldChain.getBlockchainSize, newChain.getBlockchainSize)
-        .map(_.previousHash)
+    val remains = newChain
+      .slice(oldChain.getBlockchainSize, newChain.length)
+      .map(_.previousHash)
 
-      val remainsPrev = newChain.allBlocks
-        .slice(oldChain.getBlockchainSize - 1, newChain.getBlockchainSize - 1)
-        .map(_.hash)
+    val remainsPrev = newChain
+      .slice(oldChain.getBlockchainSize - 1, newChain.length - 1)
+      .map(_.hash)
 
-      log.info(remains + " " + remainsPrev)
-      remains == remainsPrev
+    log.info(remains + " " + remainsPrev)
+    remains == remainsPrev
 
-    } else {
-      false
-    }
   }
 
 }

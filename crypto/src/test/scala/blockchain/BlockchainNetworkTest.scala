@@ -5,7 +5,7 @@ import akka.pattern.ask
 import akka.testkit.{ImplicitSender, TestKit, TestProbe}
 import akka.util.Timeout
 import blockchain.BlockChain.GenesisBlock
-import blockchain.BlockchainNetwork.{AddBlockRequest, Balance, BlockchainQuery}
+import blockchain.BlockchainNetwork.{AddBlockRequest, Balance, BlockchainQuery, BlocksIncome}
 import blockchain.Mining.Mine
 import org.scalatest.{BeforeAndAfterAll, FlatSpecLike, GivenWhenThen, Matchers}
 import p2p.PeerToPeer.AddPeer
@@ -37,7 +37,7 @@ class BlockchainNetworkTest
 
   it should "replace old blockchain when larger blockchain received" in new TestActor {
     val newChain = BlockChain().addBlock("Data")
-    blockChainActor ! newChain
+    blockChainActor ! BlocksIncome(newChain.allBlocks)
     expectMsg("Chain updated, new size: 2")
   }
 

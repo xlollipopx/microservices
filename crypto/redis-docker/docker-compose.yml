@@ -1,0 +1,18 @@
+version: '2'
+services:
+  redis1:
+    image: redis:6.2.0-alpine
+    volumes:
+      - ./redis-conf/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    command: redis-server /usr/local/etc/redis/redis.conf
+
+
+  redis2:
+    image: redis:6.2.0-alpine
+    volumes:
+      - ./redis-conf/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6380:6379"
+    command: redis-server /usr/local/etc/redis/redis.conf

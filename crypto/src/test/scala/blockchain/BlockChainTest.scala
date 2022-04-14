@@ -1,7 +1,6 @@
 package blockchain
 
 import blockchain.BlockChain.{config, GenesisBlock}
-import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.{FlatSpec, FreeSpec, Matchers}
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import scala.collection.immutable.Seq
@@ -17,7 +16,6 @@ class BlockChainTest extends FreeSpec with Matchers {
 
   "Test apply" in {
     assert(BlockChain().firstBlock == GenesisBlock)
-
   }
 
   "Test mine method" in {

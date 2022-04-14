@@ -2,7 +2,7 @@ package http
 
 import blockchain.BlockChain.GenesisBlock
 import blockchain.{Block, BlockChain, Transaction}
-import blockchain.BlockchainNetwork.{Balance, BlockchainQuery, TransactionBroadcast}
+import blockchain.BlockchainNetwork.{Balance, BlockchainIncome, BlockchainQuery, TransactionBroadcast}
 import blockchain.Mining.Mine
 import akka.actor.ActorRef
 import akka.http.scaladsl.model.StatusCodes
@@ -23,13 +23,13 @@ import scala.concurrent.{ExecutionContext, Future}
 import p2p.PeerToPeer.{AddPeer, GetPeers, Peers}
 import http.JsonHelper
 import model.login.{Blocks, Credentials, LoginRequest, PeerRequest, Request}
-import utils.FileProcessor
+import utils.{CredentialFileProcessor, CredentialProcessor}
 
 trait Routes extends Json4sSupport with JsonHelper {
 
   val blockChainActor:           ActorRef
   implicit val executionContext: ExecutionContext
-  val fileProcessor:             FileProcessor
+  val fileProcessor:             CredentialProcessor
   val Auth:                      Authentication
 
   implicit val stringUnmarshallers: FromEntityUnmarshaller[String] =
@@ -52,11 +52,12 @@ trait Routes extends Json4sSupport with JsonHelper {
             val secretKey = fileProcessor.getSecretKey
             fileProcessor.setCredentials(req)
             respondWithToken(req.username, secretKey)
-
         }
       }
 
-    } ~
+    }
+  } ~
+    post {
       //curl -v -H POST http://localhost:9000/signin -H 'Content-Type: application/json' -d '{"username":"http://localhost:9000", "password":"admin" }'
       path("signin") {
         entity(as[String]) { data =>
@@ -69,7 +70,7 @@ trait Routes extends Json4sSupport with JsonHelper {
           }
         }
       }
-  }
+    }
 
   val authRoutes: Route =
     get {
@@ -77,7 +78,7 @@ trait Routes extends Json4sSupport with JsonHelper {
       //curl -H "Authorization: " http://localhost:9000/blocks
       path("blocks") {
         Auth.authenticated { _ =>
-          val chain: Future[Blocks] = (blockChainActor ? BlockchainQuery).map { case blockChain: BlockChain =>
+          val chain: Future[Blocks] = (blockChainActor ? BlockchainQuery).map { case BlockchainIncome(blockChain) =>
             Blocks(List(GenesisBlock.copy()) ++ blockChain.allBlocks.slice(1, blockChain.allBlocks.length))
           }
           complete(chain)
@@ -89,7 +90,6 @@ trait Routes extends Json4sSupport with JsonHelper {
             complete((blockChainActor ? GetPeers).mapTo[Peers])
           }
         }
-
     } ~
       post {
         //curl -H "Authorization: " -X POST http://localhost:9000/makeTransaction -H 'Content-Type: application/json' -d '{"sender":"Anton", "receiver":"Bob", "amount": 10, "timestamp": 10031 }'
@@ -126,12 +126,12 @@ trait Routes extends Json4sSupport with JsonHelper {
             }
           }
         } ~
-          // curl -H "Authorization: " -X POST 'Content-Type: application/json' -d '{"body": {"peer": "akka.tcp://BlockChain@node2:2552/user/blockChainActor"}, "headers": {"Authorization": ""}}' http://localhost:9000/addPeer
+          // curl -H "Authorization: " -X POST 'Content-Type: application/json' -d '{"body": {"peer": "akka.tcp://BlockChain@node1:2552/user/blockChainActor"}, "headers": {"Authorization": ""}}' http://localhost:9000/addPeer
           path("addPeer") {
             Auth.authenticated { _ =>
               entity(as[String]) { data =>
-                println(data)
                 val req = parse(data).extract[PeerRequest]
+                println(req.body.peer)
                 blockChainActor ! AddPeer(req.body.peer)
                 complete(s"Added peer ${req.body.peer}")
               }

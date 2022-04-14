@@ -16,7 +16,7 @@ import org.json4s.native.Serialization
 import org.json4s.{DefaultFormats, FieldSerializer, Formats}
 import org.scalatest.{BeforeAndAfterAll, FlatSpecLike, FreeSpec, Matchers}
 import p2p.PeerToPeer.{AddPeer, GetPeers, Peers}
-import utils.FileProcessor
+import utils.CredentialFileProcessor
 
 import scala.concurrent.ExecutionContext
 import scala.concurrent.duration.DurationInt
@@ -24,11 +24,13 @@ import scala.concurrent.duration.DurationInt
 class RoutesNetworkTest extends FlatSpecLike with Matchers with ScalatestRouteTest with BeforeAndAfterAll {
 
   trait TestRoutes extends Routes {
-    val blockChain:                BlockChain       = BlockChain()
-    override val blockChainActor:  ActorRef         = system.actorOf(BlockChainActor.props(blockChain))
-    override val executionContext: ExecutionContext = ExecutionContext.global
-    val fileProcessor:             FileProcessor    = new FileProcessor()
-    val Auth:                      Authentication   = new Authentication(fileProcessor)
+    val blockChain:                BlockChain              = BlockChain()
+    override val blockChainActor:  ActorRef                = system.actorOf(BlockChainActor.props(blockChain))
+    override val executionContext: ExecutionContext        = ExecutionContext.global
+    val fileProcessor:             CredentialFileProcessor = new CredentialFileProcessor()
+    fileProcessor.setSecretKey(Authentication.generateSecretKey())
+    val key = fileProcessor.getSecretKey
+    val Auth: Authentication = new Authentication(fileProcessor, key)
   }
 
   implicit def default(implicit system: ActorSystem): RouteTestTimeout = RouteTestTimeout(5.seconds)
@@ -54,7 +56,6 @@ class RoutesNetworkTest extends FlatSpecLike with Matchers with ScalatestRouteTe
 
     Post("/balance") ~> RawHeader("Authorization", token) ~> routes ~> check {
       assert(responseAs[String].contains("0"))
-
     }
   }
 

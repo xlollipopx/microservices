@@ -2,7 +2,7 @@ package blockchain
 
 import actors.CompositeActor
 import akka.actor.Props
-import blockchain.BlockchainNetwork.AddBlockRequest
+import blockchain.BlockchainNetwork.{AddBlockRequest, BlockchainIncome, BlocksIncome}
 import blockchain.Mining.Mine
 import p2p.PeerToPeer
 
@@ -18,7 +18,7 @@ trait Mining {
       Future(blockChain.addBlock(data)).onComplete {
         case Success(_) =>
           broadcast(AddBlockRequest(blockChain.latestBlock))
-          broadcast(blockChain)
+          broadcast(BlocksIncome(blockChain.allBlocks))
           log.info("Block mined!")
         case Failure(exception) => log.info(exception.toString)
       }

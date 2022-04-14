@@ -8,11 +8,14 @@ import p2p.PeerToPeer
 object BlockchainNetwork {
   case object LastBlockQuery
   case object BlockchainQuery
+  case object BlocksQuery
   case class Balance(wallet: String)
   case class BlockchainResponse(chain: BlockChain)
   case class AddBlockRequest(block: Block)
   case class TransactionBroadcast(tc: Transaction)
   case class ReceivedTransaction(tc: Transaction)
+  case class BlockchainIncome(bc: BlockChain)
+  case class BlocksIncome(seq: Seq[Block])
 }
 
 trait BlockchainNetwork {
@@ -20,8 +23,9 @@ trait BlockchainNetwork {
 
   receiver {
     case LastBlockQuery         => sender() ! blockChain.latestBlock
-    case BlockchainQuery        => sender() ! blockChain
+    case BlockchainQuery        => sender() ! BlockchainIncome(blockChain)
     case AddBlockRequest(block) => handleBlock(block)
+    case BlocksQuery            => sender() ! BlocksIncome(blockChain.allBlocks)
 
     case Balance(wallet) => {
       log.info("money :" + blockChain.getBalanceForCurrentWallet(wallet))

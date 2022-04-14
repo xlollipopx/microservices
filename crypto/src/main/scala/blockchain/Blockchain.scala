@@ -28,7 +28,7 @@ class BlockChain private (
   blocks:              ListBuffer[Block],
   pendingTransactions: ListBuffer[Transaction],
   transactionsToMine:  ListBuffer[Transaction],
-  difficulty:          Int = config.getInt("difficulty")
+  difficulty:          Int
 ) {
   import BlockChain._
 
@@ -55,7 +55,7 @@ class BlockChain private (
   def latestBlock:            Block             = blocks.last
   def allBlocks:              List[Block]       = blocks.toList
   def getPendingTransactions: List[Transaction] = pendingTransactions.toList
-  def getBlockchainSize: Int = blocks.length
+  def getBlockchainSize:      Int               = blocks.length
 
   def generateNextBlock(blockData: String): Block = {
     val previousBlock = latestBlock
@@ -129,8 +129,9 @@ object BlockChain {
       config.getString("data"),
       config.getString("hash")
     )
+  val diff: Int = config.getInt("difficulty")
 
-  def apply(): BlockChain = new BlockChain(ListBuffer(GenesisBlock), ListBuffer(), ListBuffer())
+  def apply(): BlockChain = new BlockChain(ListBuffer(GenesisBlock), ListBuffer(), ListBuffer(), diff)
 
   def validBlock(newBlock: Block, previousBlock: Block): Boolean =
     previousBlock.index + 1 == newBlock.index &&

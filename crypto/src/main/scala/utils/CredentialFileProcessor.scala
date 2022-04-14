@@ -7,9 +7,9 @@ import java.util.Properties
 import scala.io.Source
 import scala.util.{Failure, Success, Try}
 
-class FileProcessor {
+class CredentialFileProcessor extends CredentialProcessor {
 
-  val fileName = "src/main/resources/credentials.config"
+  val fileName = "./src/main/resources/credentials.config"
 
   val prop: Properties = new Properties()
 
